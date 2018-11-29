@@ -14,7 +14,7 @@ export default class App extends Component {
     return (
       <Segment padded id="app_main">
         <Items firebase={this.firebase} id={this.props.match.params.id} />
-        <Transactions />
+        <Transactions id={this.props.match.params.id} />
       </Segment>
     );
   }

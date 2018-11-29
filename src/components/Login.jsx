@@ -46,7 +46,7 @@ export default class UserInput extends Component {
           />
         </Card.Content>
 
-        <Button to={"/" + this.state.userInput} as={NavLink}>
+        <Button to={"/console/" + this.state.userInput} as={NavLink}>
           Submit
         </Button>
       </Card>

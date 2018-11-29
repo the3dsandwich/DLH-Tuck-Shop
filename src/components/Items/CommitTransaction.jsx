@@ -22,12 +22,12 @@ export default class CommitTransaction extends React.Component {
       <Card fluid>
         <Button.Group fluid>
           <Button
-            primary
+            color="pink"
             onClick={() => commitTransaction(this.state.transactions)}
           >
             Commit
           </Button>
-          <Button secondary onClick={() => clearTransaction()}>
+          <Button color="grey" onClick={() => clearTransaction()}>
             Clear
           </Button>
         </Button.Group>

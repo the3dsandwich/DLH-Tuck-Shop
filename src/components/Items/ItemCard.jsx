@@ -2,6 +2,13 @@ import React from "react";
 import { Button, Grid, Card, Input } from "semantic-ui-react";
 import { handleItemClick, handleNewItem } from "./ItemLogic";
 
+const colors = {
+  熟食: "orange",
+  零食: "red",
+  飲品: "twitter",
+  自帶碗: "black"
+};
+
 const ItemCard = categories => (
   <Card fluid key={categories.name}>
     <Card.Content>
@@ -14,6 +21,7 @@ const ItemCard = categories => (
           <Grid.Column mobile={8} computer={4} stretched key={item.name}>
             <Button
               fluid
+              color={colors[categories.name]}
               size="large"
               animated="fade"
               onClick={() => handleItemClick(item)}

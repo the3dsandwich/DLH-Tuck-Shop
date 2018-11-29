@@ -42,11 +42,17 @@ const clearTransaction = () => {
 };
 
 const commitTransaction = transactions => {
-  if (transactions.total > 0)
+  if (transactions.total > 0) {
+    transactions.key = firebase
+      .ref("Transaction")
+      .child(transactions.time.substr(0, 10))
+      .push().key;
     firebase
       .ref("Transaction")
       .child(transactions.time.substr(0, 10))
-      .push(transactions);
+      .child(transactions.key)
+      .set(transactions);
+  }
   clearTransaction();
 };
 

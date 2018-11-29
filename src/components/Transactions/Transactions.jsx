@@ -1,16 +1,20 @@
 import React from "react";
 import { Grid, Card } from "semantic-ui-react";
 import { TransactionCard } from "./TransactionCard";
-import { getTransactions, getTotal } from "./TransactionLogic";
+import { getTransactions, getTotal, getCategories } from "./TransactionLogic";
 
 export default class extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { transactions: null, total: 0 };
+    this.state = { transactions: null, total: 0, categories: [] };
 
     setInterval(
       () =>
-        this.setState({ transactions: getTransactions(), total: getTotal() }),
+        this.setState({
+          transactions: Object.values(getTransactions()),
+          total: getTotal(),
+          categories: getCategories()
+        }),
       1000
     );
   }
@@ -23,15 +27,21 @@ export default class extends React.Component {
             <Card.Content>
               <Card.Header>
                 今天總共收入
-                {this.state.total}元
+                {this.state.total} 元
               </Card.Header>
               {this.state.transactions[0] ? (
                 <Card.Description>
-                  日期：
-                  {this.state.transactions[0].time.substr(0, 10)} 負責人：
-                  {this.state.transactions[0].pic}
+                  {new Date().toDateString()} 負責人：
+                  {this.props.id}
                 </Card.Description>
               ) : null}
+              <Card.Meta>
+                熟食：
+                {this.state.categories["熟食"]} 元 ｜零食：
+                {this.state.categories["零食"]} 元 ｜飲品：
+                {this.state.categories["飲品"]} 元 ｜減價：
+                {this.state.categories["自帶碗"]} 元
+              </Card.Meta>
             </Card.Content>
           </Card>
           {this.state.transactions
