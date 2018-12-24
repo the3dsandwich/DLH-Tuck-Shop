@@ -1,6 +1,5 @@
 import React from "react";
 import { Grid, Card, Input, Form, Button } from "semantic-ui-react";
-import firebase from "../firebase";
 
 const ItemCard = categories => (
   <Card fluid key={categories.name}>
