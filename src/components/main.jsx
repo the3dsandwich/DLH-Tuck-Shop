@@ -12,7 +12,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <Segment padded id="app_main">
+      <Segment padded>
         <Items firebase={this.firebase} id={this.props.match.params.id} />
         <Transactions id={this.props.match.params.id} />
       </Segment>

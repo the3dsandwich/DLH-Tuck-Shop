@@ -14,11 +14,11 @@ const TransactionCard = transaction => (
       <Card.Description>
         {new Date(transaction.time).toLocaleTimeString()}
       </Card.Description>
-      {transaction.bought.map(trans => (
-        <Card.Meta key={Math.random().toString()}>
-          {trans.name}：{trans.price} 元
-        </Card.Meta>
-      ))}
+      <Card.Meta>
+        {transaction.bought.map(
+          trans => trans.name + "：" + trans.price + " 元｜"
+        )}
+      </Card.Meta>
     </Card.Content>
     <Button fluid color="grey" onClick={() => delTransaction(transaction.key)}>
       Delete Transaction
