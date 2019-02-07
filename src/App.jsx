@@ -13,7 +13,7 @@ export default class App extends Component {
           <Route exact path="/console/:id" component={Main} />
           <Route exact path="/enquire/:date" component={EnquireTransaction} />
           <Route exact path="/edit" component={EditItems} />
-          <Route exact path="/" component={Login} />
+          <Route component={Login} />
         </Switch>
       </BrowserRouter>
     );

@@ -9,15 +9,13 @@ const initEnquiry = date => {
       .child(new Date(date).toJSON().substr(0, 10))
       .once("value")
       .then(snap => (transactions = snap.val()));
+    return true;
   } catch (error) {
     return false;
   }
-  return true;
 };
 
 const getTransactions = () => (transactions ? transactions : []);
-
-const getPic = () => (transactions[0] ? transactions[0].pic : "");
 
 const getTotal = () => {
   if (transactions) {
@@ -51,7 +49,6 @@ const delTransaction = key => {
 
 export {
   initEnquiry,
-  getPic,
   getTransactions,
   getTotal,
   getCategories,

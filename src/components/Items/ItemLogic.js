@@ -9,10 +9,14 @@ const handleItemClick = item => {
 
 const handleNewItem = state => {
   if (state.name && !isNaN(state.price) && !isNaN(state.amount)) {
-    let item = { name: state.name, price: state.price, category: "熟食" };
-    for (let index = 0; index < state.amount; index++) {
-      bought.push(item);
-    }
+    try {
+      let price = parseFloat(state.price);
+      let amount = parseInt(state.amount);
+      let item = { name: state.name, price: price, category: "熟食" };
+      for (let index = 0; index < amount; index++) {
+        bought.push(item);
+      }
+    } catch {}
   }
 };
 

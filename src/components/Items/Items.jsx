@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { Grid } from "semantic-ui-react";
+import { Grid, Segment } from "semantic-ui-react";
 import { ItemCard, NewItemCard } from "./ItemCard";
 import CommitTransaction from "./CommitTransaction";
+import { Loading } from "../../Loading";
 
 export default class Items extends Component {
   constructor(props) {
@@ -15,19 +16,27 @@ export default class Items extends Component {
 
   render() {
     return this.state.items ? (
-      <Grid container>
-        {this.state.items.map(categories => (
-          <Grid.Column computer={8} mobile={16} key={Math.random().toString()}>
-            {ItemCard(categories)}
+      <Segment basic padded>
+        <Grid container>
+          {this.state.items.map(categories => (
+            <Grid.Column
+              computer={8}
+              mobile={16}
+              key={Math.random().toString()}
+            >
+              {ItemCard(categories)}
+            </Grid.Column>
+          ))}
+          <Grid.Column computer={8} mobile={16}>
+            <NewItemCard />
           </Grid.Column>
-        ))}
-        <Grid.Column computer={8} mobile={16}>
-          <NewItemCard />
-        </Grid.Column>
-        <Grid.Column computer={8} mobile={16}>
-          <CommitTransaction id={this.props.id} />
-        </Grid.Column>
-      </Grid>
-    ) : null;
+          <Grid.Column computer={8} mobile={16}>
+            <CommitTransaction id={this.props.id} />
+          </Grid.Column>
+        </Grid>
+      </Segment>
+    ) : (
+      <Loading />
+    );
   }
 }

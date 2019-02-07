@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { Segment } from "semantic-ui-react";
 import firebase from "./firebase";
 import Items from "./Items/Items";
 import Transactions from "./Transactions/Transactions";
+import { Header } from "../header";
 
 export default class App extends Component {
   constructor(props) {
@@ -12,10 +12,11 @@ export default class App extends Component {
 
   render() {
     return (
-      <Segment padded>
+      <div>
+        <Header />
         <Items firebase={this.firebase} id={this.props.match.params.id} />
         <Transactions id={this.props.match.params.id} />
-      </Segment>
+      </div>
     );
   }
 }
